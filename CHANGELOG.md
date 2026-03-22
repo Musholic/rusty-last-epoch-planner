@@ -2,6 +2,12 @@
 
 ## [Unreleased] - ReleaseDate
 
+### Changed
+
+- Replace `ureq` crate with `reqwest` for better IPv4/IPv6 dual stack support
+- Refactor installer
+- Bump dependencies
+
 ## [0.2.14] - 2026-03-14
 
 ### Fixed
@@ -174,8 +180,8 @@
 - First release
 
 <!-- next-url -->
-[Unreleased]: https://github.com/meehl/rusty-path-of-building/compare/v0.2.14...HEAD
 
+[Unreleased]: https://github.com/meehl/rusty-path-of-building/compare/v0.2.14...HEAD
 [0.2.14]: https://github.com/meehl/rusty-path-of-building/compare/v0.2.13...v0.2.14
 [0.2.13]: https://github.com/meehl/rusty-path-of-building/compare/v0.2.12...v0.2.13
 [0.2.12]: https://github.com/meehl/rusty-path-of-building/compare/v0.2.11...v0.2.12
