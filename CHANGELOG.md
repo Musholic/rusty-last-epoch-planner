@@ -2,6 +2,8 @@
 
 ## [Unreleased] - ReleaseDate
 
+## [0.2.16] - 2026-03-23
+
 ### Fixed
 
 - Fix bug that causes tarball extraction to fail
@@ -186,8 +188,9 @@
 - First release
 
 <!-- next-url -->
+[Unreleased]: https://github.com/meehl/rusty-path-of-building/compare/v0.2.16...HEAD
 
-[Unreleased]: https://github.com/meehl/rusty-path-of-building/compare/v0.2.15...HEAD
+[0.2.16]: https://github.com/meehl/rusty-path-of-building/compare/v0.2.15...v0.2.16
 [0.2.15]: https://github.com/meehl/rusty-path-of-building/compare/v0.2.14...v0.2.15
 [0.2.14]: https://github.com/meehl/rusty-path-of-building/compare/v0.2.13...v0.2.14
 [0.2.13]: https://github.com/meehl/rusty-path-of-building/compare/v0.2.12...v0.2.13
