@@ -183,16 +183,7 @@ pub fn download_and_extract_tarball(
     let gz = GzDecoder::new(io::BufReader::new(tmp_file));
     let mut archive = Archive::new(gz);
 
-    let mut entries = archive.entries()?;
-
-    let root_prefix = {
-        let first = entries
-            .next()
-            .ok_or_else(|| io::Error::new(io::ErrorKind::UnexpectedEof, "archive is empty"))??;
-        first.path()?.to_string_lossy().into_owned()
-    };
-
-    for entry_result in entries {
+    for entry_result in archive.entries()? {
         let mut entry = entry_result?;
         let entry_path = entry.path()?.to_path_buf();
         let entry_str = entry_path.to_string_lossy();
@@ -202,9 +193,9 @@ pub fn download_and_extract_tarball(
             continue;
         }
 
-        // Strip root prefix before matching against rules
-        let relative = match entry_str.strip_prefix(root_prefix.as_str()) {
-            Some(r) => r,
+        // Strip root folder before matching against rules
+        let relative = match entry_str.split_once('/') {
+            Some((_, rest)) => rest,
             None => continue,
         };
 
