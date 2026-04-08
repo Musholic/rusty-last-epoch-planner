@@ -37,11 +37,11 @@ regex = "1.11.2"
 reqwest = { version = "0.13.2", features = ["blocking"] }
 swash = "0.2.5"
 tar = "0.4.44"
-wgpu = { version = "27.0.1", default-features = false, features = ["std", "parking_lot", "vulkan", "wgsl"] }
+wgpu = { version = "27.0.1", default-features = false, features = ["std", "parking_lot", "vulkan", "metal", "wgsl"] }
 winit = "0.30"
 zstd = "0.13.3"
 
-[target.'cfg(unix)'.dependencies]
+[target.'cfg(target_os = "linux")'.dependencies]
 smithay-clipboard = "0.7.3"
 
 [features]
