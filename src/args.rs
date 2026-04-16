@@ -12,10 +12,6 @@ use std::path::PathBuf;
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 pub struct Args {
-    /// Used to determine which PoB to start. (PoE1 or PoE2)
-    #[arg(value_enum)]
-    pub game: Game,
-
     /// Specify a build to load on start using a URL. (Optional)
     #[arg(
         help = "URL of build to import on startup. Needs to use custom protocol schema, e.g. `pob://pobbin/<id>`"

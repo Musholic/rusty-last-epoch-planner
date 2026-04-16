@@ -1,5 +1,4 @@
-use crate::{app::App, args::Args};
-use clap::Parser;
+use crate::{app::App, args::Game};
 use std::path::{Path, PathBuf};
 use winit::event_loop::EventLoop;
 
@@ -37,10 +36,9 @@ fn main() -> anyhow::Result<()> {
         server
     };
 
-    let args = Args::parse();
     let script_dir = find_nearby_launch_script();
 
-    let mut app = App::new(args.game, script_dir)?;
+    let mut app = App::new(Game::Le, script_dir)?;
 
     let event_loop = EventLoop::with_user_event().build()?;
     event_loop.run_app(&mut app)?;
