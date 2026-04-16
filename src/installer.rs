@@ -146,7 +146,7 @@ fn report(tx: &mpsc::Sender<Progress>, msg: impl Into<String>) {
 
 /// Performs full installation of PoB assets into `target_dir`.
 ///
-/// Skips installation if `rpob.version` already exists.
+/// Skips installation if `rlep.version` already exists.
 ///
 /// Steps:
 /// 1. Fetch the compatibility table to determine which PoB version is
@@ -155,7 +155,7 @@ fn report(tx: &mpsc::Sender<Progress>, msg: impl Into<String>) {
 /// 3. Replace `UpdateCheck.lua` with a patched version and update its
 ///    checksum in `manifest.xml`. This is needed to support PoB native updater.
 /// 4. Set the branch and platform fields in `manifest.xml`.
-/// 5. Write `rpob.version` to mark the installation as complete.
+/// 5. Write `rlep.version` to mark the installation as complete.
 fn install<P: AsRef<Path>>(
     target_dir: P,
     game: Game,
@@ -164,7 +164,7 @@ fn install<P: AsRef<Path>>(
     let target_dir = target_dir.as_ref();
     let client = build_client()?;
 
-    let version_file_path = target_dir.join("rpob.version");
+    let version_file_path = target_dir.join("rlep.version");
     let current_version = env!("CARGO_PKG_VERSION");
     if version_file_path.exists() {
         let old_version = fs::read_to_string(&version_file_path)?;
@@ -197,7 +197,7 @@ fn install<P: AsRef<Path>>(
 #[derive(Debug)]
 struct VersionReq {
     pob_ver: String,
-    min_rpob_ver: String,
+    min_rlep_ver: String,
 }
 
 /// Fetches compatibility info
@@ -221,9 +221,9 @@ fn fetch_compatibility_info(
         .pairs::<String, String>()
         .filter_map(|p| p.ok())
         .filter(|(pob_version, _)| VERSION_RE.is_match(pob_version))
-        .map(|(pob_version, min_req_rpob_ver)| VersionReq {
+        .map(|(pob_version, min_req_rlep_ver)| VersionReq {
             pob_ver: pob_version,
-            min_rpob_ver: min_req_rpob_ver,
+            min_rlep_ver: min_req_rlep_ver,
         })
         .collect())
 }
@@ -231,15 +231,15 @@ fn fetch_compatibility_info(
 /// Determines the highest PoB version supported by the given Rusty PoB version.
 fn highest_supported_pob_version<'a>(
     compatibility_info: &'a [VersionReq],
-    rpob_version: &str,
+    rlep_version: &str,
 ) -> Option<&'a str> {
     let mut highest: Option<&str> = None;
     for VersionReq {
         pob_ver,
-        min_rpob_ver,
+        min_rlep_ver,
     } in compatibility_info
     {
-        if is_higher_version(min_rpob_ver, rpob_version).unwrap_or(false) {
+        if is_higher_version(min_rlep_ver, rlep_version).unwrap_or(false) {
             match highest {
                 Some(h) if !is_higher_version(h, pob_ver).unwrap_or(false) => {}
                 _ => highest = Some(pob_ver.as_str()),
@@ -446,32 +446,32 @@ mod tests {
         let compat_info = vec![
             VersionReq {
                 pob_ver: "2.56.0".into(),
-                min_rpob_ver: "0.1.0".into(),
+                min_rlep_ver: "0.1.0".into(),
             },
             // compat info might not be sorted by pob_version
             VersionReq {
                 pob_ver: "2.58.0".into(),
-                min_rpob_ver: "0.2.6".into(),
+                min_rlep_ver: "0.2.6".into(),
             },
             VersionReq {
                 pob_ver: "2.57.0".into(),
-                min_rpob_ver: "0.2.6".into(),
+                min_rlep_ver: "0.2.6".into(),
             },
             VersionReq {
                 pob_ver: "2.58.1".into(),
-                min_rpob_ver: "0.2.8".into(),
+                min_rlep_ver: "0.2.8".into(),
             },
             VersionReq {
                 pob_ver: "2.59.0".into(),
-                min_rpob_ver: "0.2.9".into(),
+                min_rlep_ver: "0.2.9".into(),
             },
             VersionReq {
                 pob_ver: "2.59.1".into(),
-                min_rpob_ver: "0.2.10".into(),
+                min_rlep_ver: "0.2.10".into(),
             },
             VersionReq {
                 pob_ver: "2.59.2".into(),
-                min_rpob_ver: "0.2.10".into(),
+                min_rlep_ver: "0.2.10".into(),
             },
         ];
         assert_eq!(highest_supported_pob_version(&compat_info, "0.0.2"), None);
