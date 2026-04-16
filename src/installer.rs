@@ -26,7 +26,7 @@ use std::{
 
 mod download;
 
-const COMPAT_REPO: &str = "meehl/rusty-pob-manifest";
+const COMPAT_REPO: &str = "Musholic/rusty-lep-manifest";
 
 static VERSION_RE: LazyLock<Regex> =
     LazyLock::new(|| Regex::new(r"^(\d+)\.(\d+)\.(\d+)$").unwrap());
@@ -206,8 +206,7 @@ fn fetch_compatibility_info(
     game: Game,
 ) -> anyhow::Result<Vec<VersionReq>> {
     let file_name = match game {
-        Game::Poe1 => "Compatibility_pob1.lua",
-        Game::Poe2 => "Compatibility_pob2.lua",
+        Game::Le => "Compatibility_lep.lua",
     };
 
     let compatibility_info_file = fetch_file_contents(client, COMPAT_REPO, file_name)?;
@@ -260,8 +259,7 @@ fn download_pob<P: AsRef<Path>>(
     let target_dir = target_dir.as_ref();
 
     let pob_repo = match game {
-        Game::Poe1 => "PathOfBuildingCommunity/PathOfBuilding",
-        Game::Poe2 => "PathOfBuildingCommunity/PathOfBuilding-PoE2",
+        Game::Le => "Musholic/LastEpochPlanner",
     };
 
     let rules = vec![

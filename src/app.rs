@@ -142,8 +142,7 @@ impl App {
 
     fn create_window(&mut self, event_loop: &ActiveEventLoop) -> anyhow::Result<()> {
         let (title, _app_id) = match self.game {
-            Game::Poe1 => ("Path of Building 1", "rusty-path-of-building-1"),
-            Game::Poe2 => ("Path of Building 2", "rusty-path-of-building-2"),
+            Game::Le => ("Last Epoch Planner", "rusty-last-epoch-planner"),
         };
 
         #[allow(unused_mut)]

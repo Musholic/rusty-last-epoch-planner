@@ -26,12 +26,9 @@ pub struct Args {
 /// Enum representing which game (PoE1 or PoE2) the application needs to launch.
 #[derive(Debug, Clone, Copy, ValueEnum)]
 pub enum Game {
-    /// Path of Exile 1
-    #[value(name = "poe1")]
-    Poe1,
-    /// Path of Exile 2
-    #[value(name = "poe2")]
-    Poe2,
+    /// Last Epoch
+    #[value(name = "le")]
+    Le,
 }
 
 impl Game {
@@ -39,8 +36,7 @@ impl Game {
     /// was used to start the application.
     pub fn data_dir(&self) -> PathBuf {
         let directory_name = match self {
-            Game::Poe1 => "RustyPathOfBuilding1",
-            Game::Poe2 => "RustyPathOfBuilding2",
+            Game::Le => "RustyLastEpochPlanner",
         };
         BaseDirs::new().unwrap().data_dir().join(directory_name)
     }
