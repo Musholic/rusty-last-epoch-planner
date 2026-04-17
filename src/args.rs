@@ -1,6 +1,6 @@
 //! `args` is used to parse the arguments passed to the program on launch.
 //!
-//! Normally these are the arguments passed after the `rusty-path-of-building`
+//! Normally these are the arguments passed after the `rusty-last-epoch-planner`
 //! command from a CLI.
 
 use clap::Parser;

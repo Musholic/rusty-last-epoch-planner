@@ -1,15 +1,14 @@
-# Contributing to Rusty Path Of Building
+# Contributing to Rusty Last Epoch Planner
 
 ## Reporting bugs
 
-- Ensure the bug was not already reported by searching through existing [issues](https://github.com/meehl/rusty-path-of-building/issues).
-- If the bug can also be reproduced with the official runtime (e.g. by running through wine), please open an issue in the [PoB1](https://github.com/PathOfBuildingCommunity/PathOfBuilding) or [PoB2](https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2) repo instead. If you're unsure, feel free to just open it here.
+- Ensure the bug was not already reported by searching through existing [issues](https://github.com/Musholic/rusty-last-epoch-planner/issues).
+- If the bug can also be reproduced with the official runtime (e.g. by running through wine), please open an issue in the [LEP](https://github.com/Musholic/LastEpochPlanner) repo instead. If you're unsure, feel free to just open it here.
 - If possible, use the bug report template to create the issue and provide as much information as possible.
 
 ## Contributing code
 
-- Get familiar with the code base before you start. I'll try to add more documentation providing a high-level overview of the architecture in the future. Until then, feel free to reach out through [Discussions](https://github.com/meehl/rusty-path-of-building/discussions) if you have any questions.
-- If you intend to work on the API functions, also check out the [SimpleGraphic](https://github.com/PathOfBuildingCommunity/PathOfBuilding-SimpleGraphic) code base. A great place to ask questions about it is the PoB dev discord server. [Here](https://github.com/PathOfBuildingCommunity/PathOfBuilding-SimpleGraphic) is more info on how to join.
+- Get familiar with the code base before you start. Feel free to reach out through [Discussions](https://github.com/Musholic/rusty-last-epoch-planner/discussions) if you have any questions.
 - Ensure the PR description clearly describes the problem and solution. Include the relevant issue number if applicable.
 
 ## macOS Development Setup
@@ -45,13 +44,12 @@ Then reload your shell or run `source ~/.bash_profile`.
 ### 3. Startup
 
 ```bash
-cargo run <poe1|poe2>
+cargo run
 ```
 
-Path of Building files are automatically downloaded to the following directories on first startup:
+Last Epoch Planner files are automatically downloaded to the following directory on first startup:
 
-- poe1: `~/Library/Application Support/RustyPathOfBuilding1`
-- poe2: `~/Library/Application Support/RustyPathOfBuilding2`
+- `~/Library/Application Support/RustyLastEpochPlanner`
 
 ### Troubleshooting
 
@@ -60,5 +58,9 @@ Path of Building files are automatically downloaded to the following directories
 This usually means the build cache points to an old LuaJIT version after a Homebrew upgrade. Run:
 
 ```bash
-cargo clean && cargo run <poe1|poe2>
+cargo clean && cargo run
 ```
+
+## Acknowledgments
+
+This project is a fork of [rusty-path-of-building](https://github.com/meehl/rusty-path-of-building) by meehl. The original project provides native Linux support for Path of Building.

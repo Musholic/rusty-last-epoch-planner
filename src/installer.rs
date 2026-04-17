@@ -320,7 +320,7 @@ fn download_pob<P: AsRef<Path>>(
     Ok(())
 }
 
-/// Replaces UpdateCheck.lua with rusty-path-of-building's modified version and
+/// Replaces UpdateCheck.lua with rusty-last-epoch-planner's modified version and
 /// updates its checksum in manifest.xml.
 fn replace_updatecheck<P: AsRef<Path>>(
     client: &reqwest::blocking::Client,

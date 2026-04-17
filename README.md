@@ -1,22 +1,18 @@
-# Rusty Path of Building
+# Rusty Last Epoch Planner
 
-Rusty Path of Building is a cross-platform runtime environment for [Path of Building](https://github.com/PathOfBuildingCommunity/PathOfBuilding) and [Path of Building 2](https://github.com/PathOfBuildingCommunity/PathOfBuilding-PoE2). Like [SimpleGraphic](https://github.com/PathOfBuildingCommunity/PathOfBuilding-SimpleGraphic), PoB's official runtime environment, it implements the API functions required by PoB's Lua code, handles window management and input, and renders the UI.
+Rusty Last Epoch Planner is a cross-platform runtime environment for [Last Epoch Planner](https://github.com/Musholic/LastEpochPlanner). Like [SimpleGraphic](https://github.com/PathOfBuildingCommunity/PathOfBuilding-SimpleGraphic), LEP's official runtime environment, it implements the API functions required by LEP's Lua code, handles window management and input, and renders the UI.
 
-The primary goal of this project is to provide native Linux support for Path of Building. It is written in Rust with cross-platform compatibility in mind and also runs on Windows, though testing there has been minimal.
+This project is a fork of [rusty-path-of-building](https://github.com/meehl/rusty-path-of-building) by meehl, adapted to work with Last Epoch Planner instead of Path of Building.
+
+The primary goal of this project is to provide native Linux support for Last Epoch Planner. It is written in Rust with cross-platform compatibility in mind and also runs on Windows, though testing there has been minimal.
 
 ## Usage
 
 ```bash
-rusty-path-of-building [poe1|poe2]
+rusty-last-epoch-planner
 ```
 
 ## Installation
-
-[![Packaging status](https://repology.org/badge/vertical-allrepos/rusty-path-of-building.svg)](https://repology.org/project/rusty-path-of-building/versions)
-
-### Flathub
-
-[![Stable version badge](https://img.shields.io/flathub/v/community.pathofbuilding.PathOfBuilding)](https://flathub.org/en/apps/community.pathofbuilding.PathOfBuilding)
 
 ### Building from source
 
@@ -28,7 +24,7 @@ cargo build --release
 
 ## Runtime Dependencies
 
-Path of Building's Lua code requires the following C libraries:
+Last Epoch Planner's Lua code requires the following C libraries:
 
 - [Lua-cURLv3](https://github.com/Lua-cURL/Lua-cURLv3)
 - [luautf8](https://github.com/starwing/luautf8)
@@ -39,4 +35,15 @@ Please refer to the [Lua documentation](https://www.lua.org/manual/5.1/manual.ht
 
 ## Known Issues
 
-- If automatic updates fail, navigate to `~/.local/share/RustyPathOfBuilding{1,2}/` and delete both the `rlep.version` file and the `Update` directory. This will force a complete re-download of PoB's latest assets and Lua code on the next startup. (Note: Third-party backends, like this project, face challenges supporting PoB's update mechanism. To make it work, fragile workarounds had to be implemented that can break unexpectedly)
+- If automatic updates fail, navigate to `~/.local/share/RustyLastEpochPlanner/` and delete both the `rlep.version` file and the `Update` directory. This will force a complete re-download of the planner's latest assets and Lua code on the next startup. (Note: Third-party backends, like this project, face challenges supporting the update mechanism. To make it work, fragile workarounds had to be implemented that can break unexpectedly)
+
+## Acknowledgments
+
+Built upon the work of [meehl](https://github.com/meehl).
+Original project: [rusty-path-of-building](https://github.com/meehl/rusty-path-of-building).
+
+Many thanks to the original author for the excellent foundation.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
